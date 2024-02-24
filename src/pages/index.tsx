@@ -10,6 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import CodePlayground from "@/components/code-playground";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +18,7 @@ export default function Home() {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <main
-      className={`${inter.className} h-screen w-full overflow-hidden bg-gray-100/50 dark:bg-gray-800/50`}
-    >
+    <main className={`${inter.className} h-screen w-full`}>
       <div className="h-screen w-full md:flex">
         <Sidebar />
         {/* responsive sidebar */}
@@ -40,9 +39,10 @@ export default function Home() {
             </SheetContent>
           </Sheet>
         </div>
-        <div className="container mt-5 grid w-full grid-cols-1 md:grid-cols-2">
-          <section>section 1</section>
-          <section>section 2</section>
+        <div className="mt-5 grid w-full">
+          <CodePlayground
+            code={`<h1 className="text-blue-400 font-bold px-4 py-2 bg-red-500">Hello world</h1>`}
+          />
         </div>
       </div>
     </main>
