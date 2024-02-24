@@ -67,10 +67,17 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        flash: {
+          "100%": {
+            backgroundColor: "#ffffff",
+            color: "#000000",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        flash: "flash 250ms ease-in-out",
       },
     },
   },

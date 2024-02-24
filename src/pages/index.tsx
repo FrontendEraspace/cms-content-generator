@@ -18,7 +18,7 @@ export default function Home() {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <main className={`${inter.className} h-screen w-full`}>
+    <main className={`${inter.className} h-screen w-full md:overflow-hidden`}>
       <div className="h-screen w-full md:flex">
         <Sidebar />
         {/* responsive sidebar */}
