@@ -21,7 +21,6 @@ export default function LoginPage() {
 
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_AUTH_URL_ENDPOINT_ALT}`,
@@ -86,12 +85,6 @@ export default function LoginPage() {
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <Link
-                  className="ml-auto inline-block text-sm underline"
-                  href="#"
-                >
-                  Forgot your password?
-                </Link>
               </div>
               <Button
                 className="w-full bg-[#153973] hover:bg-[#172554]"

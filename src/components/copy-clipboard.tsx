@@ -1,11 +1,14 @@
 import React, { ComponentPropsWithoutRef, useState } from "react";
 import { ClipboardList } from "lucide-react";
 
-interface Props extends ComponentPropsWithoutRef<"div"> {
-  copyAnimation: boolean;
+interface CopyClipboardProps extends ComponentPropsWithoutRef<"div"> {
+  animateCopy: boolean;
 }
 
-const CopyClipboard: React.FC<Props> = ({ copyAnimation, ...rest }) => {
+const CopyClipboard: React.FC<CopyClipboardProps> = ({
+  animateCopy,
+  ...rest
+}) => {
   return (
     <div
       {...rest}
@@ -20,7 +23,7 @@ const CopyClipboard: React.FC<Props> = ({ copyAnimation, ...rest }) => {
         shadow-md 
         backdrop-blur-[6.1px]
         hover:cursor-pointer
-        ${copyAnimation ? "animate-flash" : ""}
+        ${animateCopy ? "animate-flash" : ""}
       `}
     >
       <ClipboardList width={20} height={20} />
