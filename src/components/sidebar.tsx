@@ -67,7 +67,7 @@ const Sidebar = () => {
               ))}
               <SideBarListItem
                 onClick={() => logout()}
-                className="cursor-pointer items-end"
+                className="cursor-pointer items-end hover:bg-red-500 hover:text-white"
                 title={"Logout"}
                 icon={<LogOut width={20} height={20} />}
               />
@@ -115,7 +115,7 @@ const Sidebar = () => {
                   ))}
                   <SideBarListItem
                     onClick={() => logout()}
-                    className="cursor-pointer items-end"
+                    className="cursor-pointer items-end hover:bg-red-500 hover:text-white"
                     title={"Logout"}
                     icon={<LogOut width={20} height={20} />}
                   />
