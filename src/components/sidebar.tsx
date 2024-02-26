@@ -7,7 +7,7 @@ const Sidebar = () => {
     >
       <div className="flex h-12 items-center px-4">
         <Link
-          className="flex items-center gap-2 text-lg font-semibold uppercase tracking-widest dark:text-gray-50"
+          className="flex items-center gap-2 text-lg font-semibold uppercase tracking-widest"
           href="#"
         >
           CMS
