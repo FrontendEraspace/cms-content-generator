@@ -1,17 +1,30 @@
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useState } from "react";
+import React, { ComponentPropsWithoutRef, useState } from "react";
 import useAuth from "@/hooks/use-auth";
-import { Button } from "@/components/ui/button";
+import { LayoutDashboard, LogOut } from "lucide-react";
+
+const sideBarItems = [
+  {
+    name: "Dashboard",
+    href: "/",
+    icon: <LayoutDashboard width={20} height={20} />,
+  },
+  {
+    name: "Lorem Ipsum",
+    href: "/404",
+    icon: <LayoutDashboard width={20} height={20} />,
+  },
+];
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,22 +51,26 @@ const Sidebar = () => {
             />
           </Link>
         </div>
-        <section className="container h-screen py-8">
-          <p className="text-sm text-gray-500">Main Menu</p>
+        <section className="container relative h-screen py-8">
+          <p className="text-sm font-medium tracking-wide text-gray-200">
+            Main Menu
+          </p>
           <nav className="py-2">
-            <ul className="space-y-4">
-              <li className="font-medium text-zinc-400">lorem</li>
-              <li className="font-medium text-zinc-400">lorem</li>
-              <li className="font-medium text-zinc-400">lorem</li>
-              <li className="font-medium text-zinc-400">lorem</li>
-              <li className="">
-                <Button
-                  className="bg-[#692fd0] hover:bg-[#6a2fd0d3]"
-                  onClick={() => logout()}
-                >
-                  Logout
-                </Button>
-              </li>
+            <ul className="flex h-screen flex-col">
+              {sideBarItems.map((item) => (
+                <SideBarListItem
+                  key={item.name}
+                  href={item.href}
+                  title={item.name}
+                  icon={item.icon}
+                />
+              ))}
+              <SideBarListItem
+                onClick={() => logout()}
+                className="cursor-pointer items-end"
+                title={"Logout"}
+                icon={<LogOut width={20} height={20} />}
+              />
             </ul>
           </nav>
         </section>
@@ -81,28 +98,27 @@ const Sidebar = () => {
                   />
                 </Link>
               </SheetTitle>
-              <SheetDescription>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam
-                vero autem recusandae odit delectus sequi distinctio sed
-                voluptatum aperiam consectetur.
-              </SheetDescription>
             </SheetHeader>
-            <section className="container h-screen py-8">
-              <p className="text-sm text-gray-500">Main Menu</p>
+            <section className="container relative h-screen py-8">
+              <p className="text-sm font-medium tracking-wide text-gray-200">
+                Main Menu
+              </p>
               <nav className="py-2">
-                <ul className="space-y-4">
-                  <li className="font-medium text-zinc-400">lorem</li>
-                  <li className="font-medium text-zinc-400">lorem</li>
-                  <li className="font-medium text-zinc-400">lorem</li>
-                  <li className="font-medium text-zinc-400">lorem</li>
-                  <li className="">
-                    <Button
-                      className="bg-[#692fd0] hover:bg-[#6a2fd0d3]"
-                      onClick={() => logout()}
-                    >
-                      Logout
-                    </Button>
-                  </li>
+                <ul className="flex h-screen flex-col">
+                  {sideBarItems.map((item) => (
+                    <SideBarListItem
+                      key={item.name}
+                      href={item.href}
+                      title={item.name}
+                      icon={item.icon}
+                    />
+                  ))}
+                  <SideBarListItem
+                    onClick={() => logout()}
+                    className="cursor-pointer items-end"
+                    title={"Logout"}
+                    icon={<LogOut width={20} height={20} />}
+                  />
                 </ul>
               </nav>
             </section>
@@ -112,5 +128,48 @@ const Sidebar = () => {
     </>
   );
 };
+
+interface SidebarListItemProps extends ComponentPropsWithoutRef<"div"> {
+  title: string;
+  icon: React.ReactElement;
+  href?: string;
+  className?: string;
+}
+
+function SideBarListItem({
+  title,
+  icon,
+  href,
+  className,
+  ...props
+}: SidebarListItemProps) {
+  return (
+    <li
+      className={cn(
+        `
+        flex items-center 
+        justify-start 
+        space-x-2 rounded-lg 
+        px-2 py-2 
+        font-medium 
+        text-zinc-400 
+        transition-all 
+        hover:bg-white 
+        hover:text-[#153973]
+        `,
+        className,
+      )}
+    >
+      {icon}
+      {href != null ? (
+        <Link href={href}>{title}</Link>
+      ) : (
+        <div className="w-full" {...props}>
+          {title}
+        </div>
+      )}
+    </li>
+  );
+}
 
 export default Sidebar;
