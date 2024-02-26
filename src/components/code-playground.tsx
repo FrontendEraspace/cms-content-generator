@@ -22,7 +22,7 @@ const CodePlayground = ({ code: defaultCode }: CodePlaygroundProps) => {
   }
 
   return (
-    <div className="my-4 grid h-screen grid-cols-1 py-4 md:grid-cols-2">
+    <div className="my-4 grid h-screen grid-cols-1 space-y-4 py-4 md:grid-cols-2">
       <div className="relative mx-8 w-[90%] rounded-xl bg-[#1e1e1e] py-6 md:px-0">
         <CopyClipboard
           onAnimationEnd={() => setAnimateCopy(false)}

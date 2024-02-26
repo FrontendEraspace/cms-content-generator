@@ -6,7 +6,7 @@ export default function PreviewContainer({
   children: React.ReactNode;
 }) {
   return (
-    <section className="container">
+    <section className="container py-6">
       <div className="mx-auto h-[44rem] w-full max-w-lg rounded-lg border">
         <div className="flex h-[600px] flex-col">
           <div className="flex items-center justify-start border-b p-2 px-4">
